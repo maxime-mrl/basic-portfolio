@@ -1,21 +1,35 @@
-// fancy card hover animation
+// fancy card hover animation (from https://www.youtube.com/watch?v=htGfnF1zN4g&list=PLlNMRtjl29p5QBGgLiK4KdqoWu-QJYolB&index=1)
 const cards = document.querySelectorAll(".content")
 cards.forEach(card => {
-    card.onmousemove = e => {
-        const { currentTarget: target } = e;
-        const rect = target.getBoundingClientRect();
+    card.onmousemove = e => { // listen for mous movement for all card
+        // extract relative mouse position
+        const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        target.style.setProperty("--mouse-x", `${x}px`)
-        target.style.setProperty("--mouse-y", `${y}px`)
+        // set css variable
+        card.style.setProperty("--mouse-x", `${x}px`)
+        card.style.setProperty("--mouse-y", `${y}px`)
     }
 })
 
-function navTo(target) {
-    const toDisplay = document.getElementById(target);
-    if (!toDisplay) return -1; // target not found
+// card navigation
+const url = window.location.href.split("#");
+function checkUrl() {
+    const splitedUrl = url.length === 2 && url[1].length > 1 ? url : false; // check if an anchor is present to navigate to
+    if (splitedUrl) {
+        if (navTo(splitedUrl[1])) return "sucess"; // if anchor recognized sucess
+        window.location.href = splitedUrl[0] // if anchor isn't recognized remove it
+        return "changing href"
+    }
+}
+
+function navTo(target) { // return true if succes
+    const toDisplay = document.getElementById("card-" + target);
+    if (!toDisplay) return false; // target not found
     cards.forEach(card => {
         card.className = "content invisible"
     })
+    window.location.href = `${url[0]}#${target}` // used so if the page reload still land to the same place as before
     toDisplay.className = "content";
+    return true;
 }

@@ -154,30 +154,30 @@ img {
   z-index: -10;
 }
 
-#main-card {
+#card-main {
   grid-template-rows: 2fr 1fr 1fr;
 }
-#main-card .title-container > *:nth-child(2) {
+#card-main .title-container > *:nth-child(2) {
   margin-top: 1em;
 }
-#main-card .socials {
+#card-main .socials {
   display: flex;
   width: 100%;
   justify-content: space-around;
   font-size: 2rem;
 }
 
-#projects-card {
+#card-projects {
   padding-top: 5rem;
   grid-template-rows: 1fr 1fr;
 }
-#projects-card .projects-list {
+#card-projects .projects-list {
   font-size: 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
-#projects-card .projects-list hr {
+#card-projects .projects-list hr {
   width: 80%;
   height: 2px;
   border-radius: 1px;

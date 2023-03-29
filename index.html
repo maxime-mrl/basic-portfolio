@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="stylesheet/style.css">
 </head>
 <body>
-    <section class="content" id="main-card">
+    <section class="content" id="card-main">
         <div class="title-container">
             <h1 class="title">Hey 👋 I'm Maxime</h1>
             <h2 class="subtitle">Web developper</h2>
@@ -39,11 +39,11 @@
                 <span class="hidden">Mail</span>
             </a></li>
         </ul>
-        <button class="btn" onclick="navTo('projects-card')">My projects</button>
+        <button class="btn" onclick='navTo("projects")'>My projects</button>
     </section>
     
-    <section class="content invisible" id="projects-card">
-        <button class="back" onclick="navTo('main-card')">
+    <section class="content invisible" id="card-projects">
+        <button class="back" onclick='navTo("main")'>
             <i class="fa-solid fa-chevron-left"></i>
             <span class="hidden">Return</span>
         </button>

@@ -157,7 +157,7 @@ img {
         z-index: -10;
     }
 }
-#main-card {
+#card-main {
     grid-template-rows: 2fr 1fr 1fr;
     .title-container > *:nth-child(2) {
         margin-top: 1em;
@@ -172,7 +172,7 @@ img {
 }
 
 
-#projects-card {
+#card-projects {
     padding-top: $v-padding+1rem;
     grid-template-rows: 1fr 1fr;
     .projects-list {
