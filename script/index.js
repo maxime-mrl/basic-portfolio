@@ -12,8 +12,10 @@ cards.forEach(card => {
 })
 
 function navTo(target) {
-    if (!document.getElementById(target)) return -1; // target not found
+    const toDisplay = document.getElementById(target);
+    if (!toDisplay) return -1; // target not found
     cards.forEach(card => {
-        card.className = "content hidden"
+        card.className = "content invisible"
     })
+    toDisplay.className = "content";
 }

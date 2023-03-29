@@ -10,6 +10,7 @@
 
 $radius: 0.4em;
 $v-padding: 4rem;
+$transition-duration: 300ms;
 
 /* -------------------------------------------------------------------------- */
 /*                                  RESET CSS                                 */
@@ -100,7 +101,7 @@ h1, h2 {
 
 .links-hover > * {
     cursor: pointer;
-    transition: 200ms;
+    transition: $transition-duration;
     &:hover {
         transform: translateY(-0.08em) scale(1.1);
         text-shadow: 0 0.15em 0.3em #1e1e1e;
@@ -112,7 +113,7 @@ h1, h2 {
     top: 1rem;
     left: 1rem;
     font-size: 1.8rem;
-    transition: 200ms;
+    transition: $transition-duration;
     &:hover {
         transform: rotate(-5deg) scale(1.05) translateX(-0.08rem);
     }
@@ -124,7 +125,7 @@ h1, h2 {
     padding: 0.7em 2em;
     border-radius: $radius;
     border: 1px solid #efefef60;
-    transition: 200ms;
+    transition: $transition-duration;
     &:hover {
         color: #1e1e1e;
         border: 1px solid #1e1e1e;
@@ -165,11 +166,16 @@ h1, h2 {
             transparent 40%
         );
         border-radius: inherit;
-        transition: opacity 300ms ease-in-out;
+        transition: opacity $transition-duration ease-in-out;
         opacity: 0;
     }
     &:hover::before {
         opacity: 1;
+    }
+    transition: $transition-duration;
+    &.invisible {
+        opacity: 0;
+        position: absolute;
     }
 }
 #main-card {
