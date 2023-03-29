@@ -114,7 +114,7 @@ img {
 
 .back {
     position: absolute;
-    top: 4rem;
+    top: 2rem;
     left: 2rem;
     font-size: 1.8rem;
     transition: $transition-duration;
@@ -222,7 +222,7 @@ img {
             background: radial-gradient( /* radial gradient move following mouse */
                 60rem
                 at var(--mouse-x, 0) var(--mouse-y, 0),
-                #ffffff05,
+                #ffffff06,
                 transparent 40%
             );
             border-radius: inherit;

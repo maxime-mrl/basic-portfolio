@@ -110,7 +110,7 @@ img {
 
 .back {
   position: absolute;
-  top: 4rem;
+  top: 2rem;
   left: 2rem;
   font-size: 1.8rem;
   transition: 300ms;
@@ -213,7 +213,7 @@ img {
     top: 0;
     height: 100%;
     width: 100%;
-    background: radial-gradient(60rem at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.0196078431), transparent 40%);
+    background: radial-gradient(60rem at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255, 255, 255, 0.0235294118), transparent 40%);
     border-radius: inherit;
     transition: opacity 300ms ease-in-out;
     opacity: 0;
