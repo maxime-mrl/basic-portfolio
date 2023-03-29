@@ -48,19 +48,6 @@ button {
 /* -------------------------------------------------------------------------- */
 
 /* --------------------------------- GENERAL -------------------------------- */
-body::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: scale(5);
-    z-index: -1;
-    background: #1e1e1e; //fallback
-	background: linear-gradient(45deg, #C1292E, #350363, #118dd0);
-    background-repeat: repeat;
-	background-size: 400% 400%;
-	animation: gradient 30s linear infinite;
-}
 body {
     background-color: #1e1e1e;
     overflow: hidden;
@@ -72,6 +59,19 @@ body {
     align-items: center;
     height: 100vh;
     height: 100dvh;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: scale(5);
+        z-index: -1;
+        background: #1e1e1e; //fallback
+        background: linear-gradient(45deg, #C1292E, #350363, #118dd0);
+        background-repeat: repeat;
+        background-size: 400% 400%;
+        animation: gradient 30s linear infinite;
+    }
 }
 
 .hidden { /* for all element that need to be present in dom but invisible for accessibility */
@@ -94,9 +94,13 @@ img {
     max-height: 100%;
 }
 
-h1, h2 {
+.title {
     font-family: "Digital geometric";
     font-size: 3rem;
+}
+.subtitle {
+    // font-family: "Digital geometric";
+    font-size: 2rem;
 }
 
 .links-hover > * {
@@ -155,32 +159,39 @@ h1, h2 {
 }
 #main-card {
     grid-template-rows: 2fr 1fr 1fr;
-}
-#projects-card {
-    padding-top: $v-padding+1rem;
-    grid-template-rows: 1fr 1fr;
-}
-
-.projects-list {
-    font-size: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    hr {
-        width: 80%;
-        height: 2px;
-        border-radius: 1px;
-        background-color: #efefefaa;
-        margin: 0.2em auto;
+    .title-container > *:nth-child(2) {
+        margin-top: 1em;
+    }
+    
+    .socials {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        font-size: 2rem;
     }
 }
 
-.socials {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    font-size: 2rem;
+
+#projects-card {
+    padding-top: $v-padding+1rem;
+    grid-template-rows: 1fr 1fr;
+    .projects-list {
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        hr {
+            width: 80%;
+            height: 2px;
+            border-radius: 1px;
+            background-color: #efefefaa;
+            margin: 0.2em auto;
+            cursor: default;
+        }
+    }
 }
+
+
 
 
 

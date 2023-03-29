@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="stylesheet/style.css">
 </head>
 <body>
-    <div class="content" id="main-card">
-        <h1>Hey 👋 I'm Maxime</h1>
+    <section class="content" id="main-card">
+        <div class="title-container">
+            <h1 class="title">Hey 👋 I'm Maxime</h1>
+            <h2 class="subtitle">Web developper</h2>
+        </div>
         <ul class="socials links-hover">
             <li><a href="https://github.com/maximel-mrl" target="_blank">
                 <i class="fa-brands fa-github"></i>
@@ -37,14 +40,14 @@
             </a></li>
         </ul>
         <button class="btn" onclick="navTo('projects-card')">My projects</button>
-    </div>
+    </section>
     
-    <div class="content invisible" id="projects-card">
+    <section class="content invisible" id="projects-card">
         <button class="back" onclick="navTo('main-card')">
             <i class="fa-solid fa-chevron-left"></i>
             <span class="hidden">Return</span>
         </button>
-        <h2>My projects</h2>
+        <h2 class="title">My projects</h2>
         <ul class="projects-list links-hover">
             <li><a href="https://projects.maxime-morel.xyz/under-burger/" target="_blank">
                 Under-Burger
@@ -58,7 +61,7 @@
                 Flappy Bird recreation
             </a></li>
         </ul>
-    </div>
+    </section>
     <script src="script/index.js"></script>
 </body>
 </html>
