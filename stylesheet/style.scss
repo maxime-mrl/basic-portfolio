@@ -110,8 +110,8 @@ h1, h2 {
 
 .back {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 4rem;
+    left: 2rem;
     font-size: 1.8rem;
     transition: $transition-duration;
     &:hover {
@@ -139,43 +139,18 @@ h1, h2 {
 /*                                   MOBILE                                   */
 /* -------------------------------------------------------------------------- */
 .content {
-    position: relative;
     text-align: center;
     display: grid;
     gap: 3rem;
     justify-items: center;
     align-items: center;
-    background-color: #1e1e1e50;
-    border: 1.5px solid #1e1e1eBB;
-    padding: $v-padding 3rem;
-    border-radius: $radius;
-    & > * {
-        z-index: 2;
-    }
-    &::before { /* fancy hover animations w/ JS */
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 100%;
-        background: radial-gradient( /* radial gradient move following mouse */
-            60rem
-            at var(--mouse-x, 0) var(--mouse-y, 0),
-            #ffffff05,
-            transparent 40%
-        );
-        border-radius: inherit;
-        transition: opacity $transition-duration ease-in-out;
-        opacity: 0;
-    }
-    &:hover::before {
-        opacity: 1;
-    }
     transition: $transition-duration;
+    z-index: 2;
     &.invisible {
         opacity: 0;
         position: absolute;
+        pointer-events: none;
+        z-index: -10;
     }
 }
 #main-card {
@@ -208,6 +183,40 @@ h1, h2 {
 /* -------------------------------------------------------------------------- */
 
 @media screen and (min-width: 768px) {
+    .content {
+        position: relative;
+        background-color: #1e1e1e50;
+        border: 1.5px solid #1e1e1eBB;
+        padding: $v-padding 3rem;
+        border-radius: $radius;
+        & > * {
+            z-index: 3;
+        }
+        &::before { /* fancy hover animations w/ JS */
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: radial-gradient( /* radial gradient move following mouse */
+                60rem
+                at var(--mouse-x, 0) var(--mouse-y, 0),
+                #ffffff05,
+                transparent 40%
+            );
+            border-radius: inherit;
+            transition: opacity $transition-duration ease-in-out;
+            opacity: 0;
+        }
+        &:hover::before {
+            opacity: 1;
+        }
+    }
+    .back {
+        top: 1rem;
+        left: 1rem;
+    }
 }
 
 
