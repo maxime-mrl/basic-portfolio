@@ -168,7 +168,6 @@ img {
 }
 
 #card-projects {
-  padding-top: 5rem;
   grid-template-rows: 1fr 1fr;
 }
 #card-projects .projects-list {
@@ -225,6 +224,9 @@ img {
   .back {
     top: 1rem;
     left: 1rem;
+  }
+  #card-projects {
+    padding-top: 5rem;
   }
 }
 @keyframes gradient { /* background animation */

@@ -173,7 +173,6 @@ img {
 
 
 #card-projects {
-    padding-top: $v-padding+1rem;
     grid-template-rows: 1fr 1fr;
     .projects-list {
         font-size: 1.2rem;
@@ -237,6 +236,10 @@ img {
     .back {
         top: 1rem;
         left: 1rem;
+    }
+
+    #card-projects {
+        padding-top: $v-padding+1rem;
     }
 }
 
