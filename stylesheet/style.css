@@ -98,6 +98,9 @@ img {
 .subtitle {
   font-size: 2rem;
 }
+.subtitle.black {
+  color: #1e1e1e;
+}
 
 .links-hover > * {
   cursor: pointer;
@@ -115,6 +118,10 @@ img {
   border-radius: 0.4em;
   border: 1px solid rgba(239, 239, 239, 0.3764705882);
   transition: 300ms;
+}
+.btn.black-bg {
+  background-color: rgba(30, 30, 30, 0.4392156863);
+  border-color: rgba(30, 30, 30, 0.6666666667);
 }
 .btn:hover {
   color: #1e1e1e;
@@ -239,15 +246,8 @@ img {
   filter: drop-shadow(5px 5px 5px #1e1e1e);
 }
 .caroussel-content .text .btn {
-  background-color: rgba(30, 30, 30, 0.4392156863);
-  border-color: rgba(30, 30, 30, 0.6666666667);
   font-size: 1.5rem;
   margin: 5% 0;
-}
-.caroussel-content .text .btn:hover {
-  color: #1e1e1e;
-  border: 1px solid #1e1e1e;
-  background-color: rgba(239, 239, 239, 0.5019607843);
 }
 
 /* NAVIGATION */

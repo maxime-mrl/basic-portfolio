@@ -101,6 +101,9 @@ img {
 .subtitle {
     // font-family: "Digital geometric";
     font-size: 2rem;
+    &.black {
+        color: #1e1e1e;
+    }
 }
 
 .links-hover > * {
@@ -119,6 +122,10 @@ img {
     padding: 0.7em 2em;
     border-radius: $radius;
     border: 1px solid #efefef60;
+    &.black-bg {
+        background-color: #1e1e1e70;
+        border-color: #1e1e1eaa;
+    }
     transition: $transition-duration;
     &:hover {
         color: #1e1e1e;
@@ -244,15 +251,8 @@ img {
         flex-direction: column;
         filter: drop-shadow(5px 5px 5px #1e1e1e);
         .btn {
-            background-color: #1e1e1e70;
-            border-color: #1e1e1eaa;
             font-size: 1.5rem;
             margin: 5% 0;
-            &:hover {
-                color: #1e1e1e;
-                border: 1px solid #1e1e1e;
-                background-color: #efefef80;
-            }
         }
     }
 }
