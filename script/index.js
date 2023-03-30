@@ -2,9 +2,10 @@ const cards = document.querySelectorAll(".content");
 const url = window.location.href.split("#");
 
 const images = document.querySelectorAll(".caroussel-content > *");
-const autoDefil = document.querySelector(".auto"); 
+const autoDefil = document.querySelector(".auto");
 let actualSlide = 0;
 let autoSlideInterval;
+if (autoDefil.getAttribute("data-state") == "play") play();
 
 /* ----------------------- fancy card hover animation ----------------------- */
 // (from https://www.youtube.com/watch?v=htGfnF1zN4g&list=PLlNMRtjl29p5QBGgLiK4KdqoWu-QJYolB&index=1)
@@ -53,7 +54,7 @@ function changeSlide(to) {
 function play() {
     autoSlideInterval = setInterval(() => {
         changeSlide(1)
-    }, 2000);
+    }, 6000);
     autoDefil.setAttribute("data-state", "play") // change datastae of play/pause container to update CSS
 }
 function pause() {
