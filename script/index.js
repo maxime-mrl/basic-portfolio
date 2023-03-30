@@ -44,11 +44,13 @@ function navTo(target) { // return true if succes
 
 /* -------------------------------- CAROUSSEL ------------------------------- */
 function changeSlide(to) {
-    images[actualSlide].className = "hidden"; // hide last image
+    images[actualSlide].className = "hidden-slide"; // hide last image
+    images[actualSlide].querySelector("video").pause()
     actualSlide += to; // define slide to display for access latter images array
     if (actualSlide < 0) actualSlide = images.length-1;
     else if (actualSlide >= images.length) actualSlide = 0;
     images[actualSlide].className = "active"; // display wanted image
+    images[actualSlide].querySelector("video").play()
 }
 
 function play() {

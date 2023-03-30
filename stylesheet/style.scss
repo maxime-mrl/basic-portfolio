@@ -9,7 +9,8 @@
 }
 
 $radius: 0.4em;
-$v-padding: 4rem;
+$v-padding: 3rem;
+$h-padding: 2rem;
 $transition-duration: 300ms;
 
 /* -------------------------------------------------------------------------- */
@@ -88,12 +89,6 @@ body {
     white-space: nowrap;
 }
 
-img {
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
-}
-
 .title {
     font-family: "Digital geometric";
     font-size: 3rem;
@@ -106,23 +101,13 @@ img {
     }
 }
 
-.links-hover > * {
-    cursor: pointer;
-    transition: $transition-duration;
-    &:not(hr):hover {
-        transform: translateY(-0.08em) scale(1.1);
-        text-shadow: 0 0.15em 0.3em #1e1e1e;
-    }
-}
-
-
 .btn {
     font-size: 1.5rem;
     background-color: #efefef20;
     padding: 0.7em 2em;
     border-radius: $radius;
     border: 1px solid #efefef60;
-    &.black-bg {
+    &.black {
         background-color: #1e1e1e70;
         border-color: #1e1e1eaa;
     }
@@ -147,6 +132,10 @@ img {
     align-items: center;
     transition: $transition-duration;
     z-index: 2;
+    margin: 0 4vw;
+    & > * {
+        z-index: 3;
+    }
     &.invisible {
         opacity: 0;
         position: absolute;
@@ -154,6 +143,7 @@ img {
         z-index: -10;
     }
 }
+
 #card-main {
     grid-template-rows: 2fr 1fr 1fr;
     .title-container > *:nth-child(2) {
@@ -167,12 +157,10 @@ img {
         font-size: 2rem;
     }
 }
-
-
 #card-projects {
-    width: 35rem;
-    max-width: 70vh;
-    grid-template-rows: 1fr 2fr;
+    width: 50rem;
+    max-width: 90vh;
+    grid-template-rows: 1fr 3fr;
     .projects-list {
         font-size: 1.2rem;
         display: flex;
@@ -189,13 +177,6 @@ img {
     }
 }
 
-.cp {
-    position: fixed;
-    bottom: 0.5em;
-    right: 1em;
-    color: #efefef99;
-}
-
 .back {
     position: absolute;
     top: 2rem;
@@ -205,6 +186,13 @@ img {
     &:hover {
         transform: rotate(-5deg) scale(1.05) translateX(-0.08rem);
     }
+}
+
+.cp {
+    position: fixed;
+    bottom: 0.5em;
+    right: 1em;
+    color: #efefef99;
 }
 
 /* -------------------------------- CAROUSSEL ------------------------------- */
@@ -227,11 +215,13 @@ img {
         width: 100%;
         height: 100%;
     }
-    & > .hidden {
-        animation: hide-img 500ms forwards;
+    & > .hidden-slide {
+        animation: hide-slide $transition-duration forwards;
+        z-index: 1;
     }
     & > .active {
-        animation: display-img 500ms forwards;
+        animation: display-slide $transition-duration forwards;
+        z-index: 2;
     }
     img, video {
         position: absolute;
@@ -240,21 +230,28 @@ img {
         width: 100%;
         height: 100%;
         z-index: 0;
+        border-radius: $radius;
+        opacity: 0.6;
     }
     .text {
         position: absolute;
         z-index: 3;
-        width: 80%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+        border-radius: $radius;
+        background-color: #1e1e1e40;
         filter: drop-shadow(5px 5px 5px #1e1e1e);
-        .btn {
-            font-size: 1.5rem;
-            margin: 5% 0;
+        &:has(.black) {
+            background-color: #efefef30;
+            filter: none;
+        }
+        .subtitle {
+            font-size: 2.8rem;
         }
     }
 }
@@ -262,14 +259,17 @@ img {
 /* NAVIGATION */
 .controls {
     position: absolute;
-    display: flex;
     bottom: 0.5em;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.5rem;
+    z-index: 5;
+
+    display: flex;
     gap: 1em;
+
+    font-size: 1.5rem;
     button {
-        text-shadow: 3px 3px 2px #1e1e1e;
+        text-shadow: 3px 3px 4px #1e1e1e99;
         transition: $transition-duration;
         &:hover {
             transform: scale(1.1);
@@ -292,13 +292,10 @@ img {
 @media screen and (min-width: 768px) {
     .content {
         position: relative;
+        padding: $v-padding $h-padding;
         background-color: #1e1e1e50;
-        border: 1.5px solid #1e1e1eBB;
-        padding: $v-padding 3rem;
         border-radius: $radius;
-        & > * {
-            z-index: 3;
-        }
+        border: 1.5px solid #1e1e1eBB;
         &::before { /* fancy hover animations w/ JS */
             content: "";
             position: absolute;
@@ -324,12 +321,13 @@ img {
         top: 1rem;
         left: 1rem;
     }
-
-    #card-projects {
-        padding-top: $v-padding+1rem;
-    }
 }
 
+@media screen and (max-width: 350px) {
+    .content {
+        margin: 0;
+    }
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                 ANIMATIONS                                 */
@@ -350,13 +348,13 @@ img {
 }
 
 /* CAROUSSEL ANNIMATION */
-@keyframes hide-img {
+@keyframes hide-slide {
     0% {
         opacity: 1;
         display: block;
     }
     99% {
-        opacity: 0;
+        opacity: 1;
         display: block;
     }
     100% {
@@ -365,7 +363,7 @@ img {
     }
 }
 
-@keyframes display-img {
+@keyframes display-slide {
     0% {
         opacity: 0;
         display: none;
