@@ -48,19 +48,40 @@
             <span class="hidden">Return</span>
         </button>
         <h2 class="title">My projects</h2>
-        <ul class="projects-list links-hover">
-            <li><a href="https://projects.maxime-morel.xyz/under-burger/" target="_blank">
-                Under-Burger
-            </a></li>
-            <hr>
-            <li><a href="https://projects.maxime-morel.xyz/crea-jardins/" target="_blank">
-                Crea-Jardins
-            </a></li>
-            <hr>
-            <li><a href="https://projects.maxime-morel.xyz/flappy-bird/" target="_blank">
-                Flappy Bird recreation
-            </a></li>
-        </ul>
+        <div class="caroussel">
+            <div class="caroussel-content">
+                <div class="active">
+                    <img src="img/image-1.jpg" alt="Paysage depuis le salève">
+                    <div class="text">
+                        <h3 class="subtitle">Under Burger</h3>
+                        <a href="https://projects.maxime-morel.xyz/under-burger" target="_blank" class="btn">Go check it out</a>
+                    </div>
+                </div>
+                <div class="hidden"><img src="img/image-2.jpg" alt="rocher au salève"></div>
+                <div class="hidden"><img src="img/image-3.jpg" alt="coucher de soleil depuis le salève"></div>
+                <div class="hidden"><img src="img/image-4.jpg" alt="chemin des étournelles"></div>
+            </div>
+            <div class="controls">
+                <button id="prev" class="nav" onclick="changeSlide(-1)">
+                    <i class="fa-solid fa-chevron-left"></i>
+                    <span class="hidden">previous</span>
+                </button>
+                <span class="auto" data-state="pause">
+                    <button id="play" onclick="play()">
+                        <i class="fa-solid fa-play"></i>
+                        <span class="hidden">activate auto play</span>
+                    </button>
+                    <button id="pause" onclick="pause()">
+                        <i class="fa-solid fa-pause"></i>
+                        <span class="hidden">stop auto play</span>
+                    </button>
+                </span>
+                <button id="next" class="nav" onclick="changeSlide(1)">
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span class="hidden">next</span>
+                </button>
+            </div>
+        </div>
     </section>
     <span class="cp">
         © 2023 - Maxime Morel

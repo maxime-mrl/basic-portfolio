@@ -112,16 +112,6 @@ img {
     }
 }
 
-.back {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    font-size: 1.8rem;
-    transition: $transition-duration;
-    &:hover {
-        transform: rotate(-5deg) scale(1.05) translateX(-0.08rem);
-    }
-}
 
 .btn {
     font-size: 1.5rem;
@@ -173,7 +163,7 @@ img {
 
 
 #card-projects {
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
     .projects-list {
         font-size: 1.2rem;
         display: flex;
@@ -197,11 +187,99 @@ img {
     color: #efefef99;
 }
 
+.back {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    font-size: 1.8rem;
+    transition: $transition-duration;
+    &:hover {
+        transform: rotate(-5deg) scale(1.05) translateX(-0.08rem);
+    }
+}
+
+/* -------------------------------- CAROUSSEL ------------------------------- */
+.caroussel {
+    margin: 0 auto;
+    position: relative;
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    overflow: hidden;
+}
+
+.caroussel-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    & > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    & > .hidden {
+        animation: hide-img 500ms forwards;
+    }
+    & > .active {
+        animation: display-img 500ms forwards;
+    }
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+    .text {
+        position: absolute;
+        z-index: 3;
+        width: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        display: flex;
+        flex-direction: column;
+        filter: drop-shadow(5px 5px 5px #1e1e1e);
+        .btn {
+            font-size: 1.5rem;
+            margin: 5% 0;
+        }
+    }
+}
+
+/* NAVIGATION */
+.controls {
+    position: absolute;
+    display: flex;
+    bottom: 0.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    gap: 1em;
+    button {
+        text-shadow: 3px 3px 2px #1e1e1e;
+        transition: $transition-duration;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+}
+.auto > * { display: none; }
+.auto[data-state=play] > #pause { display: flex; }
+.auto[data-state=pause] > #play { display: flex; }
+
+/* prev/next */
+
+
+
 
 /* -------------------------------------------------------------------------- */
 /*                                   DESKTOP                                  */
 /* -------------------------------------------------------------------------- */
-
 @media screen and (min-width: 768px) {
     .content {
         position: relative;
@@ -244,6 +322,9 @@ img {
 }
 
 
+/* -------------------------------------------------------------------------- */
+/*                                 ANIMATIONS                                 */
+/* -------------------------------------------------------------------------- */
 @keyframes gradient { /* background animation */
 	0% {
         transform: rotate(120deg) scale(5);
@@ -257,4 +338,35 @@ img {
         transform: rotate(360deg) scale(5);
 		background-position: 0% 20%;
 	}
+}
+
+/* CAROUSSEL ANNIMATION */
+@keyframes hide-img {
+    0% {
+        opacity: 1;
+        display: block;
+    }
+    99% {
+        opacity: 0;
+        display: block;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes display-img {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+    1% {
+        opacity: 0;
+        display: block;
+    }
+    100% {
+        opacity: 1;
+        display: block;
+    }
 }
