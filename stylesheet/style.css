@@ -219,7 +219,7 @@ img {
 .caroussel-content > .active {
   animation: display-img 500ms forwards;
 }
-.caroussel-content img {
+.caroussel-content img, .caroussel-content video {
   position: absolute;
   top: 0;
   left: 0;
@@ -239,8 +239,15 @@ img {
   filter: drop-shadow(5px 5px 5px #1e1e1e);
 }
 .caroussel-content .text .btn {
+  background-color: rgba(30, 30, 30, 0.4392156863);
+  border-color: rgba(30, 30, 30, 0.6666666667);
   font-size: 1.5rem;
   margin: 5% 0;
+}
+.caroussel-content .text .btn:hover {
+  color: #1e1e1e;
+  border: 1px solid #1e1e1e;
+  background-color: rgba(239, 239, 239, 0.5019607843);
 }
 
 /* NAVIGATION */
