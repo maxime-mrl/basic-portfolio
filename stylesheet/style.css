@@ -57,7 +57,7 @@ body {
 }
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   transform: scale(5);
@@ -186,7 +186,7 @@ img {
 }
 
 .cp {
-  position: absolute;
+  position: fixed;
   bottom: 0.5em;
   right: 1em;
   color: rgba(239, 239, 239, 0.6);
