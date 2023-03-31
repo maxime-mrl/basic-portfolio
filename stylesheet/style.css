@@ -115,9 +115,25 @@ body::before {
   letter-spacing: 0.002em;
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                   MOBILE                                   */
-/* -------------------------------------------------------------------------- */
+.cp {
+  position: fixed;
+  bottom: 0.5em;
+  right: 1em;
+  color: rgba(239, 239, 239, 0.6);
+}
+
+.back {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 1.8rem;
+  transition: 300ms;
+}
+.back:hover {
+  transform: scale(1.05) translateX(-0.08rem);
+}
+
+/* ----------------------------- PAGES SPECIFIC ----------------------------- */
 .content {
   text-align: center;
   display: grid;
@@ -154,24 +170,6 @@ body::before {
   width: 50rem;
   max-width: 90vh;
   grid-template-rows: 1fr 3fr;
-}
-
-.back {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  font-size: 1.8rem;
-  transition: 300ms;
-}
-.back:hover {
-  transform: scale(1.05) translateX(-0.08rem);
-}
-
-.cp {
-  position: fixed;
-  bottom: 0.5em;
-  right: 1em;
-  color: rgba(239, 239, 239, 0.6);
 }
 
 /* -------------------------------- CAROUSSEL ------------------------------- */
@@ -217,6 +215,7 @@ body::before {
   position: absolute;
   width: 100%;
   height: 100%;
+  padding-bottom: 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -240,7 +239,7 @@ body::before {
 /* NAVIGATION */
 .controls {
   position: absolute;
-  bottom: 0.5em;
+  bottom: 1.5em;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
@@ -268,7 +267,27 @@ body::before {
   display: flex;
 }
 
-/* prev/next */
+.progress {
+  position: absolute;
+  bottom: 0.2em;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 3;
+  display: flex;
+  gap: 1em;
+}
+.progress .dot {
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  border: 0.15em solid #efefef;
+}
+.progress .active {
+  background-color: #efefef;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                   DESKTOP                                  */
 /* -------------------------------------------------------------------------- */

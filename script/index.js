@@ -2,10 +2,11 @@ const cards = document.querySelectorAll(".content");
 const url = window.location.href.split("#");
 
 const images = document.querySelectorAll(".caroussel-content > *");
-const autoDefil = document.querySelector(".auto");
+const autoDefil = document.querySelector(".caroussel .auto");
+let progress = document.querySelector(".caroussel .progress")
 let actualSlide = 0;
 let autoSlideInterval;
-if (autoDefil.getAttribute("data-state") == "play") play();
+initCaroussel()
 
 /* ----------------------- fancy card hover animation ----------------------- */
 // (from https://www.youtube.com/watch?v=htGfnF1zN4g&list=PLlNMRtjl29p5QBGgLiK4KdqoWu-QJYolB&index=1)
@@ -45,12 +46,27 @@ function navTo(target) { // return true if succes
 /* -------------------------------- CAROUSSEL ------------------------------- */
 function changeSlide(to) {
     images[actualSlide].className = "hidden-slide"; // hide last image
-    images[actualSlide].querySelector("video").pause()
+    images[actualSlide].querySelector("video").pause();
     actualSlide += to; // define slide to display for access latter images array
     if (actualSlide < 0) actualSlide = images.length-1;
     else if (actualSlide >= images.length) actualSlide = 0;
     images[actualSlide].className = "active"; // display wanted image
-    images[actualSlide].querySelector("video").play()
+    images[actualSlide].querySelector("video").play();
+    // update dot progress
+    progress.forEach(dot => {
+        dot.className = "dot"
+    })
+    for (let i = 0; i <= actualSlide; i++) {
+        progress[i].className = "dot active"
+    }
+}
+
+function goToSlide(to) {
+    if (to >= images.length || to < 0) return;
+    pause()
+    images[actualSlide].className = "hidden-slide"; // hide last image
+    actualSlide = to;
+    changeSlide(0)
 }
 
 function play() {
@@ -62,6 +78,18 @@ function play() {
 function pause() {
     clearInterval(autoSlideInterval);
     autoDefil.setAttribute("data-state", "pause") // change datastae of play/pause container to update CSS
+}
+
+function initCaroussel() {
+    if (autoDefil.getAttribute("data-state") == "play") play();
+    images.forEach((e, i) => {
+        const dot = document.createElement("div")
+        dot.className = "dot"
+        progress.appendChild(dot)
+        dot.addEventListener("click", () => goToSlide(i))
+    })
+    progress = progress.querySelectorAll("*")
+    progress[0].className = "dot active"
 }
 
 
