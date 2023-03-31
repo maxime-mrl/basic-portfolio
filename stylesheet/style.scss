@@ -1,11 +1,11 @@
 @use "sass:color"; // for color function (fade-out)
 @font-face { /* title */
     font-family: "Digital geometric";
-    src: url("/assets/fonts/digital-geometric.otf");
+    src: url("../assets/fonts/digital-geometric.otf");
 }
 @font-face { /* text */
     font-family: "Varela Round";
-    src: url("/assets/fonts/VarelaRound-Regular.ttf");
+    src: url("../assets/fonts/VarelaRound-Regular.ttf");
 }
 
 $radius: 0.4em;
@@ -209,7 +209,7 @@ body {
         }
         .text {
             background-color: #1e1e1e80;
-            &:has(.black) {
+            &.black-txt {
                 background-color: #efefef80;
                 filter: none;
             }
@@ -227,7 +227,7 @@ body {
         gap: 10%;
         background-color: #1e1e1e40;
         filter: drop-shadow(5px 5px 5px #1e1e1e);
-        &:has(.black) {
+        &.black-txt {
             background-color: #efefef30;
             filter: drop-shadow(5px 5px 5px #efefef90);
 
