@@ -65,6 +65,7 @@ function goToSlide(to) {
     if (to >= images.length || to < 0) return;
     pause()
     images[actualSlide].className = "hidden-slide"; // hide last image
+    images[actualSlide].querySelector("video").pause();
     actualSlide = to;
     changeSlide(0)
 }
