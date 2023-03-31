@@ -94,7 +94,6 @@ body {
     font-size: 3rem;
 }
 .subtitle {
-    // font-family: "Digital geometric";
     font-size: 2rem;
     &.black {
         color: #1e1e1e;
@@ -107,11 +106,11 @@ body {
     padding: 0.7em 2em;
     border-radius: $radius;
     border: 1px solid #efefef60;
+    transition: $transition-duration;
     &.black {
         background-color: #1e1e1e70;
         border-color: #1e1e1eaa;
     }
-    transition: $transition-duration;
     &:hover {
         color: #1e1e1e;
         border: 1px solid #1e1e1e;
@@ -131,7 +130,6 @@ body {
     justify-items: center;
     align-items: center;
     transition: $transition-duration;
-    z-index: 2;
     margin: 0 4vw;
     & > * {
         z-index: 3;
@@ -149,7 +147,6 @@ body {
     .title-container > *:nth-child(2) {
         margin-top: 1em;
     }
-    
     .socials {
         display: flex;
         width: 100%;
@@ -161,20 +158,6 @@ body {
     width: 50rem;
     max-width: 90vh;
     grid-template-rows: 1fr 3fr;
-    .projects-list {
-        font-size: 1.2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        hr {
-            width: 80%;
-            height: 2px;
-            border-radius: 1px;
-            background-color: #efefefaa;
-            margin: 0.2em auto;
-            cursor: default;
-        }
-    }
 }
 
 .back {
@@ -184,7 +167,7 @@ body {
     font-size: 1.8rem;
     transition: $transition-duration;
     &:hover {
-        transform: rotate(-5deg) scale(1.05) translateX(-0.08rem);
+        transform: scale(1.05) translateX(-0.08rem);
     }
 }
 
@@ -197,45 +180,44 @@ body {
 
 /* -------------------------------- CAROUSSEL ------------------------------- */
 .caroussel {
-    margin: 0 auto;
     position: relative;
     aspect-ratio: 16 / 10;
     width: 100%;
     overflow: hidden;
+    border-radius: $radius;
 }
 
 .caroussel-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
     & > * {
         position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
     }
-    & > .hidden-slide {
-        animation: hide-slide $transition-duration forwards;
-        z-index: 1;
-    }
-    & > .active {
-        animation: display-slide $transition-duration forwards;
-        z-index: 2;
-    }
+    & > .hidden-slide { animation: hide-slide $transition-duration forwards }
+    & > .active { animation: display-slide $transition-duration forwards }
     img, video {
         position: absolute;
-        top: 0;
         left: 0;
-        width: 100%;
         height: 100%;
-        z-index: 0;
-        border-radius: $radius;
         opacity: 0.6;
+        transition: transform $transition-duration ease-in-out;
+        filter: blur(3px);
+    }
+    &:hover {
+        video, img {
+            transform: scale(1.15);
+            filter: blur(6px);
+        }
+        .text {
+            background-color: #1e1e1e80;
+            &:has(.black) {
+                background-color: #efefef80;
+                filter: none;
+            }
+        }
     }
     .text {
         position: absolute;
-        z-index: 3;
         width: 100%;
         height: 100%;
         display: flex;
@@ -243,15 +225,19 @@ body {
         justify-content: center;
         align-items: center;
         gap: 10%;
-        border-radius: $radius;
         background-color: #1e1e1e40;
         filter: drop-shadow(5px 5px 5px #1e1e1e);
         &:has(.black) {
             background-color: #efefef30;
-            filter: none;
+            filter: drop-shadow(5px 5px 5px #efefef90);
+
         }
+        transition: background-color $transition-duration ease-in-out;
         .subtitle {
-            font-size: 2.8rem;
+            font-size: 8vw;
+        }
+        .btn {
+            font-size: 6vw;
         }
     }
 }
@@ -321,6 +307,15 @@ body {
         top: 1rem;
         left: 1rem;
     }
+
+    .caroussel-content .text {
+        .subtitle {
+            font-size: 2.8rem;
+        }
+        .btn {
+            font-size: 1.5rem;
+        }
+    }
 }
 
 @media screen and (max-width: 350px) {
@@ -359,6 +354,8 @@ body {
     }
     100% {
         opacity: 0;
+        z-index: -1;
+        pointer-events: none;
         display: none;
     }
 }
