@@ -247,6 +247,16 @@ body::before {
   display: flex;
 }
 
+.caroussel:has(.active .black) .progress .dot {
+  border: 0.15em solid #1e1e1e;
+}
+.caroussel:has(.active .black) .progress .active {
+  background-color: #1e1e1e;
+}
+.caroussel:has(.active .black) .controls {
+  color: #1e1e1e;
+}
+
 .progress {
   position: absolute;
   bottom: 0.2em;

@@ -240,6 +240,20 @@ body {
 .auto[data-state=play] > #pause { display: flex; }
 .auto[data-state=pause] > #play { display: flex; }
 
+.caroussel:has(.active .black) { // has not well supported but not so important styling soo
+    .progress {
+        .dot {
+            border: 0.15em solid #1e1e1e;
+        }
+        .active {
+            background-color: #1e1e1e;
+        }
+    }
+    .controls {
+        color: #1e1e1e;
+    }
+}
+
 .progress {
     position: absolute;
     bottom: 0.2em;
