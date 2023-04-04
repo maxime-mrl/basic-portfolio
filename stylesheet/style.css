@@ -256,6 +256,9 @@ body::before {
 .caroussel:has(.active .black) .controls {
   color: #1e1e1e;
 }
+.caroussel:has(.active .black) .controls button {
+  text-shadow: 1px 1px 4px rgba(239, 239, 239, 0.7333333333);
+}
 
 .progress {
   position: absolute;
