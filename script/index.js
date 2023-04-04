@@ -72,6 +72,7 @@ function goToSlide(to) {
 
 function play() {
     autoSlideInterval = setInterval(() => {
+        if (document.querySelector(".caroussel *:hover")) return;
         changeSlide(1)
     }, 6000);
     autoDefil.setAttribute("data-state", "play") // change datastae of play/pause container to update CSS
