@@ -335,11 +335,11 @@ body::before {
   .caroussel {
     margin: 0;
   }
-  .caroussel-content:hover video, .caroussel-content:hover img {
+  .caroussel:hover .caroussel-content video, .caroussel:hover .caroussel-content img {
     transform: scale(1.2);
     filter: blur(7px);
   }
-  .caroussel-content:hover .text {
+  .caroussel:hover .caroussel-content .text {
     opacity: 1;
   }
   .caroussel-content .text {
