@@ -95,9 +95,6 @@ body {
 }
 .subtitle {
     font-size: 2rem;
-    &.black {
-        color: #1e1e1e;
-    }
 }
 
 .btn {
@@ -107,10 +104,6 @@ body {
     border-radius: $radius;
     border: 1px solid #efefef60;
     transition: $transition-duration;
-    &.black {
-        background-color: #1e1e1e70;
-        border-color: #1e1e1eaa;
-    }
     &:hover {
         color: #1e1e1e;
         border: 1px solid #1e1e1e;
@@ -157,6 +150,11 @@ body {
         z-index: -10;
     }
 }
+@media screen and (max-width: 350px) {
+    .content {
+        margin: 0;
+    }
+}
 
 #card-main {
     grid-template-rows: 2fr 1fr 1fr;
@@ -172,74 +170,49 @@ body {
 }
 
 #card-projects {
-    width: 50rem;
-    max-width: 90vh;
-    grid-template-rows: 1fr 3fr;
+    width: 55rem;
+    max-width: 95vh;
+    grid-template-rows: 1fr 6fr;
 }
 
 /* -------------------------------- CAROUSSEL ------------------------------- */
 .caroussel {
     position: relative;
-    aspect-ratio: 16 / 10;
     width: 100%;
-    overflow: hidden;
+    aspect-ratio: 16 / 10;
     border-radius: $radius;
+    margin: 4rem 0 7rem;
 }
 
 .caroussel-content {
-    & > * {
+    & > div > * {
         position: absolute;
         width: 100%;
         height: 100%;
     }
-    & > .hidden-slide { animation: hide-slide $transition-duration forwards }
-    & > .active { animation: display-slide $transition-duration forwards }
-    img, video {
-        position: absolute;
-        left: 0;
-        height: 100%;
-        opacity: 0.6;
-        transition: transform $transition-duration ease-in-out;
-        filter: blur(3px);
-    }
-    &:hover {
-        video, img {
-            transform: scale(1.15);
-            filter: blur(6px);
-        }
-        .text {
-            background-color: #1e1e1e80;
-            &.black-txt {
-                background-color: #efefef80;
-                filter: none;
-            }
+    .bg {
+        overflow: hidden;
+        border-radius: $radius;
+        > * {
+            transition: transform $transition-duration ease-in-out;
+            width: 100%;
         }
     }
     .text {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        padding-bottom: 2em;
+        height: calc(100% + 10rem);
+        margin-top: -4rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        gap: 10%;
-        background-color: #1e1e1e40;
-        filter: drop-shadow(5px 5px 5px #1e1e1e);
-        &.black-txt {
-            background-color: #efefef30;
-            filter: drop-shadow(5px 5px 5px #efefef90);
-
-        }
-        transition: background-color $transition-duration ease-in-out;
-        .subtitle {
-            font-size: 8vw;
-        }
-        .btn {
-            font-size: 6vw;
+        & > * {
+            max-height: 3em;
         }
     }
+    .subtitle { font-size: 8vw; }
+    .btn { font-size: 6vw; }
+    & > .hidden-slide { animation: hide-slide $transition-duration forwards }
+    & > .active { animation: display-slide $transition-duration forwards }
 }
 
 /* NAVIGATION */
@@ -334,9 +307,42 @@ body {
     }
 }
 
-@media screen and (max-width: 350px) {
-    .content {
-        margin: 0;
+@media screen and (min-aspect-ratio: 4/5) {
+    #card-projects { grid-template-rows: 1fr 3fr; }
+    .caroussel { margin: 0; }
+    .caroussel-content {
+        &:hover {
+            video, img {
+                transform: scale(1.2);
+                filter: blur(7px);
+            }
+            .text {
+                opacity: 1;
+            }
+        }
+        .text {
+            height: 100%;
+            margin-top: 0;
+            justify-content: center;
+            gap: 10%;
+            padding-bottom: 2em;
+            background-color: #1e1e1e80;
+            border-radius: $radius;
+            filter: drop-shadow(5px 5px 5px #1e1e1e);
+            &.black-txt {
+                background-color: #efefef80;
+                filter: drop-shadow(5px 5px 5px #efefef90);
+            }
+            transition: opacity $transition-duration ease-in-out;
+            opacity: 0;
+        }
+    }
+    .subtitle.black {
+        color: #1e1e1e;
+    }
+    .btn.black {
+        background-color: #1e1e1e70;
+        border-color: #1e1e1eaa;
     }
 }
 

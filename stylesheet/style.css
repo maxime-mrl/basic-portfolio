@@ -91,9 +91,6 @@ body::before {
 .subtitle {
   font-size: 2rem;
 }
-.subtitle.black {
-  color: #1e1e1e;
-}
 
 .btn {
   font-size: 1.5rem;
@@ -102,10 +99,6 @@ body::before {
   border-radius: 0.4em;
   border: 1px solid rgba(239, 239, 239, 0.3764705882);
   transition: 300ms;
-}
-.btn.black {
-  background-color: rgba(30, 30, 30, 0.4392156863);
-  border-color: rgba(30, 30, 30, 0.6666666667);
 }
 .btn:hover {
   color: #1e1e1e;
@@ -153,6 +146,11 @@ body::before {
   z-index: -10;
 }
 
+@media screen and (max-width: 350px) {
+  .content {
+    margin: 0;
+  }
+}
 #card-main {
   grid-template-rows: 2fr 1fr 1fr;
 }
@@ -167,73 +165,55 @@ body::before {
 }
 
 #card-projects {
-  width: 50rem;
-  max-width: 90vh;
-  grid-template-rows: 1fr 3fr;
+  width: 55rem;
+  max-width: 95vh;
+  grid-template-rows: 1fr 6fr;
 }
 
 /* -------------------------------- CAROUSSEL ------------------------------- */
 .caroussel {
   position: relative;
-  aspect-ratio: 16/10;
   width: 100%;
-  overflow: hidden;
+  aspect-ratio: 16/10;
   border-radius: 0.4em;
+  margin: 4rem 0 7rem;
 }
 
-.caroussel-content > * {
+.caroussel-content > div > * {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+.caroussel-content .bg {
+  overflow: hidden;
+  border-radius: 0.4em;
+}
+.caroussel-content .bg > * {
+  transition: transform 300ms ease-in-out;
+  width: 100%;
+}
+.caroussel-content .text {
+  height: calc(100% + 10rem);
+  margin-top: -4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.caroussel-content .text > * {
+  max-height: 3em;
+}
+.caroussel-content .subtitle {
+  font-size: 8vw;
+}
+.caroussel-content .btn {
+  font-size: 6vw;
 }
 .caroussel-content > .hidden-slide {
   animation: hide-slide 300ms forwards;
 }
 .caroussel-content > .active {
   animation: display-slide 300ms forwards;
-}
-.caroussel-content img, .caroussel-content video {
-  position: absolute;
-  left: 0;
-  height: 100%;
-  opacity: 0.6;
-  transition: transform 300ms ease-in-out;
-  filter: blur(3px);
-}
-.caroussel-content:hover video, .caroussel-content:hover img {
-  transform: scale(1.15);
-  filter: blur(6px);
-}
-.caroussel-content:hover .text {
-  background-color: rgba(30, 30, 30, 0.5019607843);
-}
-.caroussel-content:hover .text.black-txt {
-  background-color: rgba(239, 239, 239, 0.5019607843);
-  filter: none;
-}
-.caroussel-content .text {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding-bottom: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10%;
-  background-color: rgba(30, 30, 30, 0.2509803922);
-  filter: drop-shadow(5px 5px 5px #1e1e1e);
-  transition: background-color 300ms ease-in-out;
-}
-.caroussel-content .text.black-txt {
-  background-color: rgba(239, 239, 239, 0.1882352941);
-  filter: drop-shadow(5px 5px 5px rgba(239, 239, 239, 0.5647058824));
-}
-.caroussel-content .text .subtitle {
-  font-size: 8vw;
-}
-.caroussel-content .text .btn {
-  font-size: 6vw;
 }
 
 /* NAVIGATION */
@@ -325,9 +305,42 @@ body::before {
     font-size: 1.5rem;
   }
 }
-@media screen and (max-width: 350px) {
-  .content {
+@media screen and (min-aspect-ratio: 4/5) {
+  #card-projects {
+    grid-template-rows: 1fr 3fr;
+  }
+  .caroussel {
     margin: 0;
+  }
+  .caroussel-content:hover video, .caroussel-content:hover img {
+    transform: scale(1.2);
+    filter: blur(7px);
+  }
+  .caroussel-content:hover .text {
+    opacity: 1;
+  }
+  .caroussel-content .text {
+    height: 100%;
+    margin-top: 0;
+    justify-content: center;
+    gap: 10%;
+    padding-bottom: 2em;
+    background-color: rgba(30, 30, 30, 0.5019607843);
+    border-radius: 0.4em;
+    filter: drop-shadow(5px 5px 5px #1e1e1e);
+    transition: opacity 300ms ease-in-out;
+    opacity: 0;
+  }
+  .caroussel-content .text.black-txt {
+    background-color: rgba(239, 239, 239, 0.5019607843);
+    filter: drop-shadow(5px 5px 5px rgba(239, 239, 239, 0.5647058824));
+  }
+  .subtitle.black {
+    color: #1e1e1e;
+  }
+  .btn.black {
+    background-color: rgba(30, 30, 30, 0.4392156863);
+    border-color: rgba(30, 30, 30, 0.6666666667);
   }
 }
 /* -------------------------------------------------------------------------- */
