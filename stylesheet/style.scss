@@ -131,6 +131,15 @@ body {
     }
 }
 
+.links-hover > * {
+    cursor: pointer;
+    transition: $transition-duration;
+    &:not(hr):hover {
+        transform: translateY(-0.08em) scale(1.1);
+        text-shadow: 0 0.15em 0.3em #1e1e1e;
+    }
+}
+
 /* ----------------------------- PAGES SPECIFIC ----------------------------- */
 .content {
     text-align: center;
@@ -157,7 +166,7 @@ body {
 }
 
 #card-main {
-    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-rows: 2.5fr 1fr 1fr;
     .title-container > *:nth-child(2) {
         margin-top: 1em;
     }
@@ -171,8 +180,9 @@ body {
 
 #card-projects {
     width: 55rem;
-    max-width: 95vh;
+    max-width: 100vh;
     grid-template-rows: 1fr 6fr;
+    gap: 2em;
 }
 
 /* -------------------------------- CAROUSSEL ------------------------------- */
@@ -325,7 +335,7 @@ body {
 }
 
 @media screen and (min-aspect-ratio: 4/5) {
-    #card-projects { grid-template-rows: 1fr 3fr; }
+    #card-projects { grid-template-rows: 1fr 3.5fr; }
     .caroussel { margin: 0; }
     .caroussel-content {
         &:hover {

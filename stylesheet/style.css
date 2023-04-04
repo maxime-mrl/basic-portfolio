@@ -126,6 +126,15 @@ body::before {
   transform: scale(1.05) translateX(-0.08rem);
 }
 
+.links-hover > * {
+  cursor: pointer;
+  transition: 300ms;
+}
+.links-hover > *:not(hr):hover {
+  transform: translateY(-0.08em) scale(1.1);
+  text-shadow: 0 0.15em 0.3em #1e1e1e;
+}
+
 /* ----------------------------- PAGES SPECIFIC ----------------------------- */
 .content {
   text-align: center;
@@ -152,7 +161,7 @@ body::before {
   }
 }
 #card-main {
-  grid-template-rows: 2fr 1fr 1fr;
+  grid-template-rows: 2.5fr 1fr 1fr;
 }
 #card-main .title-container > *:nth-child(2) {
   margin-top: 1em;
@@ -166,8 +175,9 @@ body::before {
 
 #card-projects {
   width: 55rem;
-  max-width: 95vh;
+  max-width: 100vh;
   grid-template-rows: 1fr 6fr;
+  gap: 2em;
 }
 
 /* -------------------------------- CAROUSSEL ------------------------------- */
@@ -320,7 +330,7 @@ body::before {
 }
 @media screen and (min-aspect-ratio: 4/5) {
   #card-projects {
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 1fr 3.5fr;
   }
   .caroussel {
     margin: 0;
