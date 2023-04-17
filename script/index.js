@@ -56,9 +56,7 @@ function changeSlide(to) {
     progress.forEach(dot => {
         dot.className = "dot"
     })
-    for (let i = 0; i <= actualSlide; i++) {
-        progress[i].className = "dot active"
-    }
+    progress[actualSlide].className = "dot active"
 }
 
 function goToSlide(to) {
